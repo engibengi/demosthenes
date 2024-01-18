@@ -1,2 +1,9 @@
 # Exclude json dataset path
 demosthenes_dataset_json/
+
+# Exclude intermediate files
+df_annotations.pkl
+df_sentences.pkl
+
+# Exclude compiled libraries
+*.pyc

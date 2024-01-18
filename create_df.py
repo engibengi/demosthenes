@@ -145,5 +145,6 @@ def create_df_all_sentences(path, crossvalfolds={}):
 # dataframes creation
 crossvalfolds = {'1000': '1', '1001': '1', '1002': '1', '1003': '2', '1004': '2', '1005': '2', '1006': '3', '1007': '3', '1008': '3', '1009': '4', '1010': '4', '1011': '4', '1012': '5', '1013': '5', '1014': '5', '1015': '3',
                  '1016': '1', '1017': '1', '1018': '1', '1019': '1', '1020': '1', '1021': '2', '1022': '2', '1023': '2', '1024': '2', '1025': '5', '1026': '5', '1027': '3', '1028': '3', '1029': '3', '1030': '4', '1031': '4', '1032': '4', '1033': '4', '1034': '4', '1035': '2', '1036': '3', '1037': '5', '1038': '5', '1039': '5'}
-create_df_annotations('.\\demosthenes_dataset_json', crossvalfolds=crossvalfolds)
-create_df_all_sentences('.\\demosthenes_dataset_json', crossvalfolds=crossvalfolds)
+json_files_path = os.path.join('.','demosthenes_dataset_json')
+create_df_annotations(json_files_path, crossvalfolds=crossvalfolds)
+create_df_all_sentences(json_files_path, crossvalfolds=crossvalfolds)
