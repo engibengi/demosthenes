@@ -1,2 +1,2 @@
 # Exclude json dataset path
-./demosthenes_dataset_json/  
+demosthenes_dataset_json/
