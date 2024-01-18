@@ -34,8 +34,9 @@ def has_children(element):
 # Main conversion from XML to JSON
 # plain_text_presence is a boolean variable that indicates whether we want the plain text in the JSON file or not
 def convert_to_json(xml_files_path, base_id=0, plain_text_presence=True, language='english', change_name=True):
-    if not os.path.isdir('./demosthenes_dataset_json'):
-        os.mkdir('./demosthenes_dataset_json')
+    json_files_path = os.path.join('.','demosthenes_dataset_json')
+    if not os.path.isdir(json_files_path):
+        os.mkdir(json_files_path)
 
     arr = os.listdir(xml_files_path)
 
@@ -43,7 +44,7 @@ def convert_to_json(xml_files_path, base_id=0, plain_text_presence=True, languag
     for sentence in arr:
         print(sentence)
 
-        to_open = xml_files_path + '\\' + sentence
+        to_open = os.path.join(xml_files_path, sentence)
 
         # Inserting the tag <body> that encapsulates the whole file
         insert_body_tag(to_open)
@@ -64,7 +65,7 @@ def convert_to_json(xml_files_path, base_id=0, plain_text_presence=True, languag
         plain_text = ''
         for i in root.itertext():
             plain_text = plain_text + i
-        plain_text = re.sub(r'\\([^rnt])', r'/\1', plain_text)
+        plain_text = re.sub(r'[\\/]([^rnt])', r'/\1', plain_text)
 
         # ANNOTATIONS
         annotations = []
@@ -103,7 +104,7 @@ def convert_to_json(xml_files_path, base_id=0, plain_text_presence=True, languag
             internal_file_name = file_name
 
         # Writing the JSON file
-        json_name = '.\\demosthenes_dataset_json\\' + internal_file_name + '.json'
+        json_name = os.path.join(json_files_path, internal_file_name + '.json')
         json_file = open(json_name, 'w', encoding='utf8')
         # Document
         json_file.write('{"document":{"_id":"')
@@ -128,4 +129,4 @@ def convert_to_json(xml_files_path, base_id=0, plain_text_presence=True, languag
         json_file.write(']}')
 
 
-convert_to_json('.\\demosthenes_dataset', base_id=1000, plain_text_presence=True, language='english')
+convert_to_json(os.path.join('.','demosthenes_dataset'), base_id=1000, plain_text_presence=True, language='english')
