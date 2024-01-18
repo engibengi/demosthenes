@@ -1,9 +1,10 @@
 import pandas as pd
+import os
 import argumentmining
 
 # read data
-df_sentences = pd.read_pickle(".\\df_sentences.pkl")
-df_annotations = pd.read_pickle(".\\df_annotations.pkl")
+df_sentences = pd.read_pickle(os.path.join('.', 'df_sentences.pkl'))
+df_annotations = pd.read_pickle(os.path.join('.', 'df_annotations.pkl'))
 
 # list of classifiers and embeddings to try
 classifiers = ['linearsvc', 'randomforest', 'gaussiannb', 'kneighbors', 'svc']
